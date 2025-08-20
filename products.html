@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Products - AgroLink</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="logo">
+                <img src="assets/img/Logo.png" alt="AgroLink" style="height: 40px;">
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#features">Features</a>
+                <a href="products.html" class="active">Products</a>
+            </div>
+            <div class="nav-actions">
+                <a href="cart.html" class="btn btn-secondary">
+                    🛒 Cart <span class="cart-count" style="background: var(--primary-green); color: white; border-radius: 50%; padding: 2px 6px; font-size: 0.8rem; margin-left: 4px;">0</span>
+                </a>
+                <a href="login.html" class="btn btn-primary login-link">Login</a>
+                <div class="user-info" style="display: none;"></div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="section bg-light" style="padding: var(--spacing-lg) 0;">
+        <div class="container">
+            <h1 class="section-title" style="margin-bottom: var(--spacing-md);">Fresh Produce Marketplace</h1>
+            <p class="section-subtitle">Discover fresh, quality produce directly from local farmers across Sri Lanka</p>
+        </div>
+    </section>
+
+    <!-- Filters Section -->
+    <section class="section" style="padding-top: var(--spacing-lg);">
+        <div class="container">
+            <div class="filters">
+                <div class="filters-row">
+                    <div class="filter-group">
+                        <label for="searchInput">Search Products</label>
+                        <input type="text" id="searchInput" class="form-control" placeholder="Search by name or farmer...">
+                    </div>
+                    <div class="filter-group">
+                        <label for="categoryFilter">Category</label>
+                        <select id="categoryFilter" class="form-control">
+                            <option value="">All Categories</option>
+                            <option value="vegetables">🥬 Vegetables</option>
+                            <option value="fruits">🍎 Fruits</option>
+                            <option value="grains">🌾 Grains</option>
+                            <option value="spices">🌶️ Spices</option>
+                            <option value="herbs">🌿 Herbs</option>
+                            <option value="legumes">🫘 Legumes</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="locationFilter">Location</label>
+                        <select id="locationFilter" class="form-control">
+                            <option value="">All Locations</option>
+                            <option value="Colombo">Colombo</option>
+                            <option value="Kandy">Kandy</option>
+                            <option value="Galle">Galle</option>
+                            <option value="Matale">Matale</option>
+                            <option value="Anuradhapura">Anuradhapura</option>
+                            <option value="Kurunegala">Kurunegala</option>
+                            <option value="Ratnapura">Ratnapura</option>
+                            <option value="Nuwara Eliya">Nuwara Eliya</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="priceMin">Min Price (Rs.)</label>
+                        <input type="number" id="priceMin" class="form-control" placeholder="0" min="0">
+                    </div>
+                    <div class="filter-group">
+                        <label for="priceMax">Max Price (Rs.)</label>
+                        <input type="number" id="priceMax" class="form-control" placeholder="1000" min="0">
+                    </div>
+                    <div class="filter-group">
+                        <label for="sortSelect">Sort By</label>
+                        <select id="sortSelect" class="form-control">
+                            <option value="">Default</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="name">Name: A to Z</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section class="section">
+        <div class="container">
+            <div class="product-grid">
+                <!-- Product 1 -->
+                <div class="product-card" data-category="vegetables" data-location="Matale" data-price="120">
+                    <div class="product-image">🍅</div>
+                    <div class="product-info">
+                        <h3 class="product-title">Fresh Tomatoes</h3>
+                        <div class="product-price">Rs. 120/kg</div>
+                        <div class="product-location">📍 Matale</div>
+                        <div class="product-farmer">👨‍🌾 Ranjith Fernando</div>
+                        <p style="font-size: 0.9rem; color: var(--dark-gray); margin: var(--spacing-xs) 0;">
+                            Fresh organic tomatoes grown in Matale. Perfect for cooking and salads.
+                        </p>
+                        <div style="display: flex; gap: var(--spacing-xs); margin-top: var(--spacing-sm);">
+                            <span class="badge badge-success">Organic</span>
+                            <span class="badge badge-info">Available</span>
+                        </div>
+                        <button class="btn btn-primary w-full mt-md add-to-cart" data-product-id="1">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card" data-category="vegetables" data-location="Kandy" data-price="180">
+                    <div class="product-image">🫛</div>
+                    <div class="product-info">
+                        <h3 class="product-title">Green Beans</h3>
+                        <div class="product-price">Rs. 180/kg</div>
+                        <div class="product-location">📍 Kandy</div>
+                        <div class="product-farmer">👩‍🌾 Kumari Silva</div>
+                        <p style="font-size: 0.9rem; color: var(--dark-gray); margin: var(--spacing-xs) 0;">
+                            Premium quality green beans, freshly harvested and ready for delivery.
+                        </p>
+                        <div style="display: flex; gap: var(--spacing-xs); margin-top: var(--spacing-sm);">
+                            <span class="badge badge-info">Available</span>
+                        </div>
+                        <button class="btn btn-primary w-full mt-md add-to-cart" data-product-id="2">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card" data-category="grains" data-location="Anuradhapura" data-price="95">
+                    <div class="product-image">🌾</div>
+                    <div class="product-info">
+                        <h3 class="product-title">Red Rice</h3>
+                        <div class="product-price">Rs. 95/kg</div>
+                        <div class="product-location">📍 Anuradhapura</div>
+                        <div class="product-farmer">👨‍🌾 Sunil Perera</div>
+                        <p style="font-size: 0.9rem; color: var(--dark-gray); margin: var(--spacing-xs) 0;">
+                            Traditional red rice variety, rich in nutrients and perfect for healthy meals.
+                        </p>
+                        <div style="display: flex; gap: var(--spacing-xs); margin-top: var(--spacing-sm);">
+                            <span class="badge badge-success">Organic</span>
+                            <span class="badge badge-info">Available</span>
+                        </div>
+                        <button class="btn btn-primary w-full mt-md add-to-cart" data-product-id="3">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card" data-category="fruits" data-location="Galle" data-price="150">
+                    <div class="product-image">🥭</div>
+                    <div class="product-info">
+                        <h3 class="product-title">Sweet Mangoes</h3>
+                        <div class="product-price">Rs. 150/kg</div>
+                        <div class="product-location">📍 Galle</div>
+                        <div class="product-farmer">👨‍🌾 Pradeep Jayasinghe</div>
+                        <p style="font-size: 0.9rem; color: var(--dark-gray); margin: var(--spacing-xs) 0;">
+                            Juicy and sweet mangoes from Galle region, perfect ripeness guaranteed.
+                        </p>
+                        <div style="display: flex; gap: var(--spacing-xs); margin-top: var(--spacing-sm);">
+                            <span class="badge badge-info">Available</span>
+                        </div>
+                        <button class="btn btn-primary w-full mt-md add-to-cart" data-product-id="4">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="product-card" data-category="vegetables" data-location="Nuwara Eliya" data-price="200">
+                    <div class="product-image">🥕</div>
+                    <div class="product-info">
+                        <h3 class="product-title">Fresh Carrots</h3>
+                        <div class="product-price">Rs. 200/kg</div>
+                        <div class="product-location">📍 Nuwara Eliya</div>
+                        <div class="product-farmer">👩‍🌾 Manjula Rathnayake</div>
+                        <p style="font-size: 0.9rem; color: var(--dark-gray); margin: var(--spacing-xs) 0;">
+                            Fresh carrots from the cool climate of Nuwara Eliya, sweet and crunchy.
+                        </p>
+                        <div style="display: flex; gap: var(--spacing-xs); margin-top: var(--spacing-sm);">
+                            <span class="badge badge-success">Organic</span>
+                            <span class="badge badge-info">Available</span>
+                        </div>
+                        <button class="btn btn-primary w-full mt-md add-to-cart" data-product-id="5">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="product-card" data-category="spices" data-location="Matale" data-price="800">
+                    <div class="product-image">🌶️</div>
+                    <div class="product-info">
+                        <h3 class="product-title">Red Chili Powder</h3>
+                        <div class="product-price">Rs. 800/kg</div>
+                        <div class="product-location">📍 Matale</div>
+                        <div class="product-farmer">👨‍🌾 Gamini Wickramasinghe</div>
+                        <p style="font-size: 0.9rem; color: var(--dark-gray); margin: var(--spacing-xs) 0;">
+                            Premium quality red chili powder, perfectly ground and spiced.
+                        </p>
+                        <div style="display: flex; gap: var(--spacing-xs); margin-top: var(--spacing-sm);">
+                            <span class="badge badge-warning">Limited</span>
+                        </div>
+                        <button class="btn btn-primary w-full mt-md add-to-cart" data-product-id="6">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 7 -->
+                <div class="product-card" data-category="fruits" data-location="Ratnapura" data-price="80">
+                    <div class="product-image">🍌</div>
+                    <div class="product-info">
+                        <h3 class="product-title">Ripe Bananas</h3>
+                        <div class="product-price">Rs. 80/kg</div>
+                        <div class="product-location">📍 Ratnapura</div>
+                        <div class="product-farmer">👨‍🌾 Asanka Perera</div>
+                        <p style="font-size: 0.9rem; color: var(--dark-gray); margin: var(--spacing-xs) 0;">
+                            Sweet and ripe bananas, perfect for eating fresh or cooking.
+                        </p>
+                        <div style="display: flex; gap: var(--spacing-xs); margin-top: var(--spacing-sm);">
+                            <span class="badge badge-info">Available</span>
+                        </div>
+                        <button class="btn btn-primary w-full mt-md add-to-cart" data-product-id="7">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 8 -->
+                <div class="product-card" data-category="vegetables" data-location="Kurunegala" data-price="160">
+                    <div class="product-image">🥬</div>
+                    <div class="product-info">
+                        <h3 class="product-title">Fresh Cabbage</h3>
+                        <div class="product-price">Rs. 160/kg</div>
+                        <div class="product-location">📍 Kurunegala</div>
+                        <div class="product-farmer">👩‍🌾 Sandamali Fernando</div>
+                        <p style="font-size: 0.9rem; color: var(--dark-gray); margin: var(--spacing-xs) 0;">
+                            Fresh and crispy cabbage, perfect for salads and cooking.
+                        </p>
+                        <div style="display: flex; gap: var(--spacing-xs); margin-top: var(--spacing-sm);">
+                            <span class="badge badge-info">Available</span>
+                        </div>
+                        <button class="btn btn-primary w-full mt-md add-to-cart" data-product-id="8">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 9 -->
+                <div class="product-card" data-category="herbs" data-location="Kandy" data-price="250">
+                    <div class="product-image">🌿</div>
+                    <div class="product-info">
+                        <h3 class="product-title">Fresh Curry Leaves</h3>
+                        <div class="product-price">Rs. 250/kg</div>
+                        <div class="product-location">📍 Kandy</div>
+                        <div class="product-farmer">👨‍🌾 Dharmasena Silva</div>
+                        <p style="font-size: 0.9rem; color: var(--dark-gray); margin: var(--spacing-xs) 0;">
+                            Aromatic fresh curry leaves, essential for authentic Sri Lankan cooking.
+                        </p>
+                        <div style="display: flex; gap: var(--spacing-xs); margin-top: var(--spacing-sm);">
+                            <span class="badge badge-success">Organic</span>
+                            <span class="badge badge-info">Available</span>
+                        </div>
+                        <button class="btn btn-primary w-full mt-md add-to-cart" data-product-id="9">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Load More Button -->
+            <div class="text-center mt-xl">
+                <button class="btn btn-secondary btn-large">Load More Products</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="section bg-light">
+        <div class="container text-center">
+            <h2>Can't find what you're looking for?</h2>
+            <p class="mt-md mb-lg">Post a request and let farmers know what you need!</p>
+            <a href="login.html" class="btn btn-primary btn-large">Post a Request</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>AgroLink</h3>
+                    <p>Empowering agricultural trade across Sri Lanka through digital innovation.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="index.html">Home</a>
+                    <a href="index.html#about">About</a>
+                    <a href="index.html#features">Features</a>
+                    <a href="products.html">Browse Products</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <a href="#help">Help Center</a>
+                    <a href="#contact">Contact Us</a>
+                    <a href="#terms">Terms & Conditions</a>
+                    <a href="#privacy">Privacy Policy</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AgroLink - UCSC Project. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Update mock products function to include the new products
+        function getMockProducts() {
+            return [
+                {
+                    id: '1',
+                    name: 'Fresh Tomatoes',
+                    price: 120,
+                    image: '🍅',
+                    farmer: 'Ranjith Fernando',
+                    location: 'Matale',
+                    category: 'vegetables',
+                    description: 'Fresh organic tomatoes grown in Matale. Perfect for cooking and salads.',
+                    organic: true,
+                    available: true
+                },
+                {
+                    id: '2',
+                    name: 'Green Beans',
+                    price: 180,
+                    image: '🫛',
+                    farmer: 'Kumari Silva',
+                    location: 'Kandy',
+                    category: 'vegetables',
+                    description: 'Premium quality green beans, freshly harvested and ready for delivery.',
+                    available: true
+                },
+                {
+                    id: '3',
+                    name: 'Red Rice',
+                    price: 95,
+                    image: '🌾',
+                    farmer: 'Sunil Perera',
+                    location: 'Anuradhapura',
+                    category: 'grains',
+                    description: 'Traditional red rice variety, rich in nutrients and perfect for healthy meals.',
+                    organic: true,
+                    available: true
+                },
+                {
+                    id: '4',
+                    name: 'Sweet Mangoes',
+                    price: 150,
+                    image: '🥭',
+                    farmer: 'Pradeep Jayasinghe',
+                    location: 'Galle',
+                    category: 'fruits',
+                    description: 'Juicy and sweet mangoes from Galle region, perfect ripeness guaranteed.',
+                    available: true
+                },
+                {
+                    id: '5',
+                    name: 'Fresh Carrots',
+                    price: 200,
+                    image: '🥕',
+                    farmer: 'Manjula Rathnayake',
+                    location: 'Nuwara Eliya',
+                    category: 'vegetables',
+                    description: 'Fresh carrots from the cool climate of Nuwara Eliya, sweet and crunchy.',
+                    organic: true,
+                    available: true
+                },
+                {
+                    id: '6',
+                    name: 'Red Chili Powder',
+                    price: 800,
+                    image: '🌶️',
+                    farmer: 'Gamini Wickramasinghe',
+                    location: 'Matale',
+                    category: 'spices',
+                    description: 'Premium quality red chili powder, perfectly ground and spiced.',
+                    limited: true
+                },
+                {
+                    id: '7',
+                    name: 'Ripe Bananas',
+                    price: 80,
+                    image: '🍌',
+                    farmer: 'Asanka Perera',
+                    location: 'Ratnapura',
+                    category: 'fruits',
+                    description: 'Sweet and ripe bananas, perfect for eating fresh or cooking.',
+                    available: true
+                },
+                {
+                    id: '8',
+                    name: 'Fresh Cabbage',
+                    price: 160,
+                    image: '🥬',
+                    farmer: 'Sandamali Fernando',
+                    location: 'Kurunegala',
+                    category: 'vegetables',
+                    description: 'Fresh and crispy cabbage, perfect for salads and cooking.',
+                    available: true
+                },
+                {
+                    id: '9',
+                    name: 'Fresh Curry Leaves',
+                    price: 250,
+                    image: '🌿',
+                    farmer: 'Dharmasena Silva',
+                    location: 'Kandy',
+                    category: 'herbs',
+                    description: 'Aromatic fresh curry leaves, essential for authentic Sri Lankan cooking.',
+                    organic: true,
+                    available: true
+                }
+            ];
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - AgroLink</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="logo">
+                <!--<img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjQwIiB2aWV3Qm94PSIwIDAgMTAwIDQwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0aCBkPSJNMTAgMzBMMjAgMTBMMzAgMzBIMTBaIiBmaWxsPSIjNENBRjUwIi8+CjxwYXRoIGQ9Ik0xNSAyNUwyMCAxNUwyNSAyNUgxNVoiIGZpbGw9IiNGRkZGRkYiLz4KPHRleHQgeD0iMzgiIHk9IjI2IiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTYiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjNENBRjUwIj5BZ3JvTGluazwvdGV4dD4KPC9zdmc+" alt="AgroLink" style="height: 40px;">
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#features">Features</a>
+                <a href="products.html">Products</a>
+            </div>
+            <div class="nav-actions">
+                <a href="#register" class="btn btn-primary" data-modal="registerModal">Register</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Login Section -->
+    <section class="section" style="min-height: 70vh; display: flex; align-items: center;">
+        <div class="container">
+            <div class="form-container">
+                <div class="text-center mb-lg">
+                    <h1>Welcome Back to AgroLink</h1>
+                    <p class="text-muted">Sign in to access your dashboard</p>
+                </div>
+                
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="role">I am a:</label>
+                        <select id="role" name="role" class="form-control" required>
+                            <option value="">Select your role</option>
+                            <option value="farmer">🧑‍🌾 Farmer</option>
+                            <option value="buyer">🛒 Buyer</option>
+                            <option value="transporter">🚚 Transporter</option>
+                            <option value="admin">🛠️ Admin</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary w-full btn-large">Sign In</button>
+                </form>
+                
+                <div class="text-center mt-lg">
+                    <p>Don't have an account? <a href="#register" data-modal="registerModal" class="text-primary">Register here</a></p>
+                    <p><a href="#forgot" class="text-muted">Forgot your password?</a></p>
+                </div>
+                
+                <!-- Demo Accounts -->
+                <div class="mt-xl">
+                    <h3 class="text-center mb-md">Demo Accounts</h3>
+                    <div class="grid grid-2">
+                        <div class="card p-md">
+                            <h4>🧑‍🌾 Farmer Demo</h4>
+                            <p class="text-muted">Email: farmer@demo.com<br>Password: demo123</p>
+                            <button onclick="loginDemo('farmer')" class="btn btn-secondary btn-sm w-full">Login as Farmer</button>
+                        </div>
+                        <div class="card p-md">
+                            <h4>🛒 Buyer Demo</h4>
+                            <p class="text-muted">Email: buyer@demo.com<br>Password: demo123</p>
+                            <button onclick="loginDemo('buyer')" class="btn btn-secondary btn-sm w-full">Login as Buyer</button>
+                        </div>
+                        <div class="card p-md">
+                            <h4>🚚 Transporter Demo</h4>
+                            <p class="text-muted">Email: transporter@demo.com<br>Password: demo123</p>
+                            <button onclick="loginDemo('transporter')" class="btn btn-secondary btn-sm w-full">Login as Transporter</button>
+                        </div>
+                        <div class="card p-md">
+                            <h4>🛠️ Admin Demo</h4>
+                            <p class="text-muted">Email: admin@demo.com<br>Password: demo123</p>
+                            <button onclick="loginDemo('admin')" class="btn btn-secondary btn-sm w-full">Login as Admin</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Modal -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Choose Registration Type</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Select your role to get started with AgroLink:</p>
+                <div class="grid grid-3 mt-lg">
+                    <a href="register_farmer.html" class="card text-center" style="text-decoration: none;">
+                        <div class="card-icon"></div>
+                        <h4>Farmer</h4>
+                        <p>List and sell your produce</p>
+                    </a>
+                    <a href="register_buyer.html" class="card text-center" style="text-decoration: none;">
+                        <div class="card-icon">🛒</div>
+                        <h4>Buyer</h4>
+                        <p>Purchase fresh produce</p>
+                    </a>
+                    <a href="register_transporter.html" class="card text-center" style="text-decoration: none;">
+                        <div class="card-icon">🚚</div>
+                        <h4>Transporter</h4>
+                        <p>Provide delivery services</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 AgroLink - UCSC Project. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Demo login function
+        function loginDemo(role) {
+            const demoAccounts = {
+                farmer: { email: 'farmer@demo.com', password: 'demo123' },
+                buyer: { email: 'buyer@demo.com', password: 'demo123' },
+                transporter: { email: 'transporter@demo.com', password: 'demo123' },
+                admin: { email: 'admin@demo.com', password: 'demo123' }
+            };
+            
+            const account = demoAccounts[role];
+            if (account) {
+                document.getElementById('email').value = account.email;
+                document.getElementById('password').value = account.password;
+                document.getElementById('role').value = role;
+                
+                showNotification(`Demo ${role} account loaded! Click Sign In to continue.`, 'success');
+            }
+        }
+    </script>
+</body>
+</html>

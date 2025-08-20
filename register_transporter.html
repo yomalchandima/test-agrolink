@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transporter Registration - AgroLink</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="split-container">
+      <!-- Left: Quote & Image -->
+      <div
+        class="split-left"
+        style="
+          background: url('assets/img/registerpage/register2.jpg') center
+            center/cover no-repeat;
+        "
+      >
+        <span class="quote-icon">&ldquo;</span>
+        <div class="split-left-content">
+          <p>
+            Reliable delivery is the backbone of fresh food markets.<br />
+            Join AgroLink and drive Sri Lanka’s food supply forward.
+          </p>
+        </div>
+      </div>
+      <!-- Right: Registration Form -->
+      <div class="split-right">
+        <div class="form-box">
+          <div style="text-align: right; margin-bottom: 0.5rem">
+            <select
+              id="registerRoleSelect"
+              class="role-switcher"
+              aria-label="Register as"
+            >
+              <option value="" disabled selected hidden>Register as...</option>
+              <option value="farmer">Register as Farmer</option>
+              <option value="buyer">Register as Buyer</option>
+            </select>
+          </div>
+          <h1>Create AgroLink Account</h1>
+          <div class="subtitle">
+            Enter your email and password to create your account
+          </div>
+          <form id="registerTransporterForm" autocomplete="off">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                class="form-control"
+                required
+                placeholder="Your name"
+              />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="form-control"
+                required
+                placeholder="you@example.com"
+              />
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                class="form-control"
+                required
+                placeholder="********"
+              />
+            </div>
+            <button type="submit" class="btn btn-primary btn-large">
+              Create Account
+            </button>
+          </form>
+          <div class="or-divider">Or continue with</div>
+          <button class="google-btn" type="button" onclick="loginWithGoogle()">
+            <img
+              src="https://www.svgrepo.com/show/475656/google-color.svg"
+              alt="Google"
+              class="google-icon"
+            />
+            Google
+          </button>
+          <div class="text-center">
+            Already have an account?
+            <a href="login.html">Sign in here</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      document
+        .getElementById("registerRoleSelect")
+        .addEventListener("change", function () {
+          if (this.value === "farmer") {
+            window.location.href = "register_farmer.html";
+          } else if (this.value === "buyer") {
+            window.location.href = "register_buyer.html";
+          }
+        });
+      function loginWithGoogle() {
+        alert("Google login coming soon!");
+      }
+      document
+        .getElementById("registerTransporterForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          alert("Account created! (Demo)");
+        });
+    </script>
+  </body>
+</html>

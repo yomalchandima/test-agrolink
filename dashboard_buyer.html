@@ -1,0 +1,189 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buyer Dashboard - AgroLink</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="logo">
+                <img src="assets/img/Logo.png" alt="AgroLink" style="height: 40px;">
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="products.html">Products</a>
+                <a href="cart.html">Cart</a>
+                <a href="dashboard_buyer.html" class="active">Dashboard</a>
+            </div>
+            <div class="nav-actions">
+                <a href="login.html" class="btn btn-primary login-link">Login</a>
+                <div class="user-info" style="display: none;"></div>
+            </div>
+        </nav>
+        <!-- Advanced Sidebar Navigation -->
+        <aside class="sidebar" style="position: fixed; left: 0; top: 80px; width: 220px; height: 100%; background: #f8f8f8; border-right: 1px solid #e0e0e0; padding: 2rem 1rem; z-index: 10;">
+            <h3 style="margin-bottom: var(--spacing-lg); color: var(--primary-green);">🛒 Buyer Dashboard</h3>
+            <ul class="sidebar-menu" style="list-style: none; padding: 0;">
+                <li><a href="#profile-section" class="menu-link">👤 Manage Profile</a></li>
+                <li><a href="#products-section" class="menu-link">🛍️ Browse/Filter Products</a></li>
+                <li><a href="#orders-section" class="menu-link">📦 Manage Orders</a></li>
+                <li><a href="#track-section" class="menu-link">🚚 Track Orders</a></li>
+                <li><a href="#requests-section" class="menu-link">🌱 Crop Requests</a></li>
+                <li><a href="#complaints-section" class="menu-link">❗ Complaints</a></li>
+                <li><a href="#chat-section" class="menu-link">💬 Communicate</a></li>
+                <li><a href="#reviews-section" class="menu-link">⭐ Ratings & Reviews</a></li>
+                <li><a href="#notifications-section" class="menu-link">🔔 Notifications</a></li>
+                <li><a href="#logout" class="menu-link" onclick="logout()">🚪 Logout</a></li>
+            </ul>
+        </aside>
+    </header>
+
+    <!-- Page Header -->
+    <section class="section bg-light" style="padding: var(--spacing-lg) 0;">
+        <div class="container">
+            <h1 class="section-title" style="margin-bottom: var(--spacing-md);">Welcome, <span id="buyerName">Buyer</span></h1>
+            <p class="section-subtitle">Your personalized dashboard for orders, wishlist, and more</p>
+        </div>
+    </section>
+
+    <!-- Filters Section -->
+    <section class="section" style="padding-top: var(--spacing-lg);">
+        <div class="container">
+            <div class="filters">
+                <div class="filters-row">
+                    <div class="filter-group">
+                        <label for="orderSearchInput">Search Orders</label>
+                        <input type="text" id="orderSearchInput" class="form-control" placeholder="Search by product or order ID...">
+                    </div>
+                    <div class="filter-group">
+                        <label for="orderStatusFilter">Order Status</label>
+                        <select id="orderStatusFilter" class="form-control">
+                            <option value="">All Statuses</option>
+                            <option value="pending">Pending</option>
+                            <option value="shipped">Shipped</option>
+                            <option value="delivered">Delivered</option>
+                            <option value="cancelled">Cancelled</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="dateFilter">Order Date</label>
+                        <input type="date" id="dateFilter" class="form-control">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Orders Grid -->
+    <section class="section">
+        <div class="container">
+            <div class="order-grid">
+                <!-- Example Order Card -->
+                <div class="order-card" data-status="delivered">
+                    <div class="order-info">
+                        <h3 class="order-title">Order #1001 - Fresh Tomatoes</h3>
+                        <div class="order-status delivered">Delivered</div>
+                        <div class="order-date">2025-08-15</div>
+                        <div class="order-details">2kg @ Rs. 120/kg from Ranjith Fernando (Matale)</div>
+                        <div class="order-total">Total: Rs. 240</div>
+                        <button class="btn btn-secondary w-full mt-md">View Details</button>
+                    </div>
+                </div>
+                <div class="order-card" data-status="pending">
+                    <div class="order-info">
+                        <h3 class="order-title">Order #1002 - Green Beans</h3>
+                        <div class="order-status pending">Pending</div>
+                        <div class="order-date">2025-08-18</div>
+                        <div class="order-details">1kg @ Rs. 180/kg from Kumari Silva (Kandy)</div>
+                        <div class="order-total">Total: Rs. 180</div>
+                        <button class="btn btn-secondary w-full mt-md">View Details</button>
+                    </div>
+                </div>
+                <!-- More order cards can be dynamically generated here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Wishlist Section -->
+    <section class="section bg-light">
+        <div class="container">
+            <h2>Wishlist</h2>
+            <div class="wishlist-grid">
+                <div class="wishlist-card">
+                    <div class="wishlist-product">🥭 Sweet Mangoes</div>
+                    <div class="wishlist-farmer">Pradeep Jayasinghe (Galle)</div>
+                    <div class="wishlist-price">Rs. 150/kg</div>
+                    <button class="btn btn-primary">Add to Cart</button>
+                </div>
+                <div class="wishlist-card">
+                    <div class="wishlist-product">🌾 Red Rice</div>
+                    <div class="wishlist-farmer">Sunil Perera (Anuradhapura)</div>
+                    <div class="wishlist-price">Rs. 95/kg</div>
+                    <button class="btn btn-primary">Add to Cart</button>
+                </div>
+                <!-- More wishlist cards can be dynamically generated here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Section -->
+    <section class="section">
+        <div class="container">
+            <h2>Cart</h2>
+            <div class="cart-grid">
+                <div class="cart-card">
+                    <div class="cart-product">🍅 Fresh Tomatoes</div>
+                    <div class="cart-farmer">Ranjith Fernando (Matale)</div>
+                    <div class="cart-qty">Qty: 2kg</div>
+                    <div class="cart-price">Rs. 240</div>
+                    <button class="btn btn-danger">Remove</button>
+                </div>
+                <!-- More cart cards can be dynamically generated here -->
+            </div>
+            <div class="cart-summary">
+                <div>Total: <span id="cartTotal">Rs. 240</span></div>
+                <a href="checkout.html" class="btn btn-primary btn-large">Proceed to Checkout</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>AgroLink</h3>
+                    <p>Empowering agricultural trade across Sri Lanka through digital innovation.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="index.html">Home</a>
+                    <a href="index.html#about">About</a>
+                    <a href="index.html#features">Features</a>
+                    <a href="products.html">Browse Products</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <a href="#help">Help Center</a>
+                    <a href="#contact">Contact Us</a>
+                    <a href="#terms">Terms & Conditions</a>
+                    <a href="#privacy">Privacy Policy</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AgroLink - UCSC Project. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Example: You can add dynamic JS for dashboard interactivity here
+    </script>
+</body>
+</html>

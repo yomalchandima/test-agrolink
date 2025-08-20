@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - AgroLink</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="logo">
+                <img src="assets/img/Logo.png" alt="AgroLink" style="height: 40px;">
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="products.html">Products</a>
+                <a href="cart.html">Cart</a>
+            </div>
+            <div class="nav-actions">
+                <div class="user-info"></div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="section bg-light" style="padding: var(--spacing-lg) 0;">
+        <div class="container">
+            <h1 class="section-title" style="margin-bottom: var(--spacing-sm);">💳 Secure Checkout</h1>
+            <p class="text-center text-muted">Complete your order securely</p>
+            
+            <!-- Checkout Steps -->
+            <div style="display: flex; justify-content: center; margin-top: var(--spacing-lg); gap: var(--spacing-lg);">
+                <div style="display: flex; align-items: center; gap: var(--spacing-xs);">
+                    <div style="width: 30px; height: 30px; background: var(--primary-green); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">1</div>
+                    <span style="color: var(--primary-green); font-weight: var(--font-weight-medium);">Cart</span>
+                </div>
+                <div style="width: 50px; height: 2px; background: var(--primary-green); margin-top: 15px;"></div>
+                <div style="display: flex; align-items: center; gap: var(--spacing-xs);">
+                    <div style="width: 30px; height: 30px; background: var(--primary-green); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">2</div>
+                    <span style="color: var(--primary-green); font-weight: var(--font-weight-medium);">Checkout</span>
+                </div>
+                <div style="width: 50px; height: 2px; background: var(--medium-gray); margin-top: 15px;"></div>
+                <div style="display: flex; align-items: center; gap: var(--spacing-xs);">
+                    <div style="width: 30px; height: 30px; background: var(--medium-gray); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">3</div>
+                    <span style="color: var(--dark-gray);">Complete</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Checkout Content -->
+    <section class="section">
+        <div class="container">
+            <form id="checkoutForm" class="grid grid-3" style="gap: var(--spacing-xl);">
+                <!-- Customer Information -->
+                <div style="grid-column: 1 / 3;">
+                    <div class="card">
+                        <div class="card-header" style="padding: var(--spacing-lg); border-bottom: 1px solid var(--medium-gray);">
+                            <h2>🏠 Delivery Information</h2>
+                        </div>
+                        <div style="padding: var(--spacing-lg);">
+                            <div class="grid grid-2">
+                                <div class="form-group">
+                                    <label for="firstName">First Name *</label>
+                                    <input type="text" id="firstName" name="firstName" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">Last Name *</label>
+                                    <input type="text" id="lastName" name="lastName" class="form-control" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" class="form-control" required>
+                                <div class="form-text">Order confirmation will be sent to this email</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" class="form-control" required>
+                                <div class="form-text">For delivery coordination</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="address">Delivery Address *</label>
+                                <textarea id="address" name="address" class="form-control" rows="3" required placeholder="Enter complete address with landmarks"></textarea>
+                            </div>
+                            
+                            <div class="grid grid-2">
+                                <div class="form-group">
+                                    <label for="city">City *</label>
+                                    <input type="text" id="city" name="city" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="postalCode">Postal Code</label>
+                                    <input type="text" id="postalCode" name="postalCode" class="form-control">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="deliveryInstructions">Special Delivery Instructions</label>
+                                <textarea id="deliveryInstructions" name="deliveryInstructions" class="form-control" rows="2" placeholder="Any special instructions for the delivery person..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Payment Information -->
+                    <div class="card mt-lg">
+                        <div class="card-header" style="padding: var(--spacing-lg); border-bottom: 1px solid var(--medium-gray);">
+                            <h2>💳 Payment Method</h2>
+                        </div>
+                        <div style="padding: var(--spacing-lg);">
+                            <div class="form-group">
+                                <label>Select Payment Method *</label>
+                                <div style="margin-top: var(--spacing-md);">
+                                    <label style="display: flex; align-items: center; gap: var(--spacing-sm); padding: var(--spacing-md); border: 2px solid var(--medium-gray); border-radius: var(--radius-md); margin-bottom: var(--spacing-sm); cursor: pointer;">
+                                        <input type="radio" name="paymentMethod" value="cod" required>
+                                        <div>
+                                            <strong>💵 Cash on Delivery (COD)</strong>
+                                            <div style="font-size: 0.9rem; color: var(--dark-gray);">Pay when you receive your order</div>
+                                        </div>
+                                    </label>
+                                    <label style="display: flex; align-items: center; gap: var(--spacing-sm); padding: var(--spacing-md); border: 2px solid var(--medium-gray); border-radius: var(--radius-md); margin-bottom: var(--spacing-sm); cursor: pointer;">
+                                        <input type="radio" name="paymentMethod" value="bank" required>
+                                        <div>
+                                            <strong>🏦 Bank Transfer</strong>
+                                            <div style="font-size: 0.9rem; color: var(--dark-gray);">Transfer to farmer's bank account</div>
+                                        </div>
+                                    </label>
+                                    <label style="display: flex; align-items: center; gap: var(--spacing-sm); padding: var(--spacing-md); border: 2px solid var(--medium-gray); border-radius: var(--radius-md); margin-bottom: var(--spacing-sm); cursor: pointer;">
+                                        <input type="radio" name="paymentMethod" value="mobile" required>
+                                        <div>
+                                            <strong>📱 Mobile Payment</strong>
+                                            <div style="font-size: 0.9rem; color: var(--dark-gray);">eZ Cash, mCash, Dialog Pay</div>
+                                        </div>
+                                    </label>
+                                    <label style="display: flex; align-items: center; gap: var(--spacing-sm); padding: var(--spacing-md); border: 2px solid var(--medium-gray); border-radius: var(--radius-md); margin-bottom: var(--spacing-sm); cursor: pointer;">
+                                        <input type="radio" name="paymentMethod" value="card" required>
+                                        <div>
+                                            <strong>💳 Credit/Debit Card (Sandbox)</strong>
+                                            <div style="font-size: 0.9rem; color: var(--dark-gray);">Visa, MasterCard - Demo mode only</div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Card Details (Hidden by default) -->
+                            <div id="cardDetails" style="display: none; margin-top: var(--spacing-lg); padding: var(--spacing-lg); background: var(--light-gray); border-radius: var(--radius-md);">
+                                <h4>Card Information</h4>
+                                <div class="form-group">
+                                    <label for="cardNumber">Card Number</label>
+                                    <input type="text" id="cardNumber" name="cardNumber" class="form-control" placeholder="1234 5678 9012 3456">
+                                </div>
+                                <div class="grid grid-2">
+                                    <div class="form-group">
+                                        <label for="expiryDate">Expiry Date</label>
+                                        <input type="text" id="expiryDate" name="expiryDate" class="form-control" placeholder="MM/YY">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="cvv">CVV</label>
+                                        <input type="text" id="cvv" name="cvv" class="form-control" placeholder="123">
+                                    </div>
+                                </div>
+                                <div class="notification warning">
+                                    <strong>Sandbox Mode:</strong> This is a demo. No real payment will be processed.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Order Summary -->
+                <div>
+                    <div class="card">
+                        <div class="card-header" style="padding: var(--spacing-lg); border-bottom: 1px solid var(--medium-gray);">
+                            <h3>📋 Order Summary</h3>
+                        </div>
+                        <div style="padding: var(--spacing-lg);">
+                            <!-- Order Items -->
+                            <div id="orderItems">
+                                <!-- Will be populated by JavaScript -->
+                            </div>
+                            
+                            <hr style="margin: var(--spacing-lg) 0;">
+                            
+                            <!-- Order Totals -->
+                            <div class="summary-row" style="display: flex; justify-content: space-between; margin-bottom: var(--spacing-sm);">
+                                <span>Subtotal:</span>
+                                <span class="order-subtotal">Rs. 0.00</span>
+                            </div>
+                            <div class="summary-row" style="display: flex; justify-content: space-between; margin-bottom: var(--spacing-sm);">
+                                <span>Delivery Fee:</span>
+                                <span class="delivery-fee">Rs. 150.00</span>
+                            </div>
+                            <div class="summary-row" style="display: flex; justify-content: space-between; margin-bottom: var(--spacing-sm);">
+                                <span>Platform Fee:</span>
+                                <span class="platform-fee">Rs. 25.00</span>
+                            </div>
+                            <hr style="margin: var(--spacing-md) 0;">
+                            <div class="summary-row" style="display: flex; justify-content: space-between; font-weight: var(--font-weight-bold); font-size: 1.2rem; color: var(--primary-green);">
+                                <span>Total:</span>
+                                <span class="order-total">Rs. 0.00</span>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary w-full btn-large mt-lg">
+                                🔒 Place Order Securely
+                            </button>
+                            
+                            <a href="cart.html" class="btn btn-secondary w-full mt-md">
+                                ← Back to Cart
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Security Info -->
+                    <div class="card mt-lg">
+                        <div style="padding: var(--spacing-lg);">
+                            <h4>🔒 Secure Checkout</h4>
+                            <ul style="margin-top: var(--spacing-md); color: var(--dark-gray); font-size: 0.9rem;">
+                                <li style="margin-bottom: var(--spacing-xs);">• SSL encrypted transaction</li>
+                                <li style="margin-bottom: var(--spacing-xs);">• Your data is protected</li>
+                                <li style="margin-bottom: var(--spacing-xs);">• Demo mode - no real payment</li>
+                                <li style="margin-bottom: var(--spacing-xs);">• 100% satisfaction guarantee</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Support -->
+                    <div class="card mt-lg">
+                        <div style="padding: var(--spacing-lg);">
+                            <h4>💬 Need Help?</h4>
+                            <p style="margin-top: var(--spacing-sm); color: var(--dark-gray); font-size: 0.9rem;">
+                                Contact our customer support team if you have any questions about your order.
+                            </p>
+                            <div style="margin-top: var(--spacing-md);">
+                                <p style="font-size: 0.9rem;"><strong>📞 Phone:</strong> +94 xxx xxx xxx</p>
+                                <p style="font-size: 0.9rem;"><strong>📧 Email:</strong> support@agrolink.lk</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 AgroLink - UCSC Project. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Show/hide card details based on payment method
+        document.querySelectorAll('input[name="paymentMethod"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const cardDetails = document.getElementById('cardDetails');
+                if (this.value === 'card') {
+                    cardDetails.style.display = 'block';
+                } else {
+                    cardDetails.style.display = 'none';
+                }
+            });
+        });
+
+        // Populate order summary
+        function populateOrderSummary() {
+            const orderItemsContainer = document.getElementById('orderItems');
+            
+            if (cart.length === 0) {
+                orderItemsContainer.innerHTML = '<p class="text-center text-muted">No items in cart</p>';
+                return;
+            }
+
+            orderItemsContainer.innerHTML = cart.map(item => `
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-md); padding-bottom: var(--spacing-md); border-bottom: 1px solid var(--light-gray);">
+                    <div style="display: flex; align-items: center; gap: var(--spacing-sm);">
+                        <div style="width: 40px; height: 40px; background: var(--light-green); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center;">
+                            ${item.image || '🥬'}
+                        </div>
+                        <div>
+                            <div style="font-weight: var(--font-weight-bold); font-size: 0.9rem;">${item.name}</div>
+                            <div style="font-size: 0.8rem; color: var(--dark-gray);">by ${item.farmer}</div>
+                            <div style="font-size: 0.8rem; color: var(--dark-gray);">Rs. ${item.price}/kg × ${item.quantity}</div>
+                        </div>
+                    </div>
+                    <div style="font-weight: var(--font-weight-bold); color: var(--primary-green);">
+                        Rs. ${(item.price * item.quantity).toFixed(2)}
+                    </div>
+                </div>
+            `).join('');
+
+            // Update totals
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const deliveryFee = subtotal >= 2500 ? 0 : 150;
+            const platformFee = subtotal > 0 ? 25 : 0;
+            const total = subtotal + deliveryFee + platformFee;
+
+            document.querySelector('.order-subtotal').textContent = `Rs. ${subtotal.toFixed(2)}`;
+            document.querySelector('.delivery-fee').textContent = deliveryFee === 0 ? 'FREE' : `Rs. ${deliveryFee.toFixed(2)}`;
+            document.querySelector('.platform-fee').textContent = `Rs. ${platformFee.toFixed(2)}`;
+            document.querySelector('.order-total').textContent = `Rs. ${total.toFixed(2)}`;
+        }
+
+        // Initialize checkout page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if cart is empty
+            if (cart.length === 0) {
+                showNotification('Your cart is empty. Redirecting to products...', 'warning');
+                setTimeout(() => {
+                    window.location.href = 'products.html';
+                }, 2000);
+                return;
+            }
+
+            populateOrderSummary();
+
+            // Auto-fill user information if logged in
+            const user = getCurrentUser();
+            if (user) {
+                document.getElementById('firstName').value = user.firstName || '';
+                document.getElementById('lastName').value = user.lastName || '';
+                document.getElementById('email').value = user.email || '';
+                document.getElementById('phone').value = user.phone || '';
+            }
+        });
+
+        // Handle checkout form submission
+        document.getElementById('checkoutForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (cart.length === 0) {
+                showNotification('Your cart is empty', 'error');
+                return;
+            }
+
+            const formData = new FormData(this);
+            const orderData = {
+                id: generateId(),
+                items: cart,
+                customer: Object.fromEntries(formData.entries()),
+                subtotal: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0),
+                deliveryFee: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0) >= 2500 ? 0 : 150,
+                platformFee: 25,
+                total: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0) + 
+                       (cart.reduce((sum, item) => sum + (item.price * item.quantity), 0) >= 2500 ? 0 : 150) + 25,
+                orderDate: new Date().toISOString(),
+                status: 'pending',
+                paymentMethod: formData.get('paymentMethod')
+            };
+
+            // Simulate order processing
+            showNotification('Processing your order...', 'info');
+            
+            setTimeout(() => {
+                // Clear cart
+                cart = [];
+                localStorage.setItem('agrolink_cart', JSON.stringify(cart));
+                
+                // Store order
+                const orders = JSON.parse(localStorage.getItem('agrolink_orders')) || [];
+                orders.push(orderData);
+                localStorage.setItem('agrolink_orders', JSON.stringify(orders));
+                
+                // Redirect to success page
+                window.location.href = `order_success.html?order=${orderData.id}`;
+            }, 2000);
+        });
+    </script>
+</body>
+</html>

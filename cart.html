@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - AgroLink</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="logo">
+                <img src="assets/img/Logo.png" alt="AgroLink" style="height: 40px;">
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="products.html">Products</a>
+                <a href="cart.html" class="active">Cart</a>
+            </div>
+            <div class="nav-actions">
+                <a href="login.html" class="btn btn-primary login-link">Login</a>
+                <div class="user-info"></div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="section bg-light" style="padding: var(--spacing-lg) 0;">
+        <div class="container">
+            <h1 class="section-title" style="margin-bottom: var(--spacing-sm);">🛒 Your Shopping Cart</h1>
+            <p class="text-center text-muted">Review your items and proceed to checkout</p>
+        </div>
+    </section>
+
+    <!-- Cart Content -->
+    <section class="section">
+        <div class="container">
+            <div class="grid grid-3" style="gap: var(--spacing-xl);">
+                <!-- Cart Items -->
+                <div style="grid-column: 1 / 3;">
+                    <div class="card">
+                        <div class="card-header" style="padding: var(--spacing-lg); border-bottom: 1px solid var(--medium-gray);">
+                            <h2>Cart Items</h2>
+                        </div>
+                        <div id="cartItems" style="padding: var(--spacing-lg);">
+                            <!-- Cart items will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cart Summary -->
+                <div>
+                    <div class="card">
+                        <div class="card-header" style="padding: var(--spacing-lg); border-bottom: 1px solid var(--medium-gray);">
+                            <h3>Order Summary</h3>
+                        </div>
+                        <div style="padding: var(--spacing-lg);">
+                            <div class="summary-row" style="display: flex; justify-content: space-between; margin-bottom: var(--spacing-sm);">
+                                <span>Subtotal:</span>
+                                <span class="cart-subtotal">Rs. 0.00</span>
+                            </div>
+                            <div class="summary-row" style="display: flex; justify-content: space-between; margin-bottom: var(--spacing-sm);">
+                                <span>Delivery Fee:</span>
+                                <span class="delivery-fee">Rs. 150.00</span>
+                            </div>
+                            <div class="summary-row" style="display: flex; justify-content: space-between; margin-bottom: var(--spacing-sm);">
+                                <span>Platform Fee:</span>
+                                <span class="platform-fee">Rs. 25.00</span>
+                            </div>
+                            <hr style="margin: var(--spacing-md) 0;">
+                            <div class="summary-row" style="display: flex; justify-content: space-between; font-weight: var(--font-weight-bold); font-size: 1.1rem;">
+                                <span>Total:</span>
+                                <span class="cart-total">Rs. 0.00</span>
+                            </div>
+                            
+                            <div style="margin-top: var(--spacing-lg);">
+                                <a href="checkout.html" class="btn btn-primary w-full btn-large" id="checkoutBtn">
+                                    Proceed to Checkout
+                                </a>
+                                <a href="products.html" class="btn btn-secondary w-full mt-md">
+                                    Continue Shopping
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Delivery Info -->
+                    <div class="card mt-lg">
+                        <div style="padding: var(--spacing-lg);">
+                            <h4>🚚 Delivery Information</h4>
+                            <ul style="margin-top: var(--spacing-md); color: var(--dark-gray); font-size: 0.9rem;">
+                                <li style="margin-bottom: var(--spacing-xs);">• Free delivery for orders over Rs. 2,500</li>
+                                <li style="margin-bottom: var(--spacing-xs);">• Delivery within 1-3 business days</li>
+                                <li style="margin-bottom: var(--spacing-xs);">• Fresh produce guaranteed</li>
+                                <li style="margin-bottom: var(--spacing-xs);">• Contact farmer directly for special requests</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Payment Methods -->
+                    <div class="card mt-lg">
+                        <div style="padding: var(--spacing-lg);">
+                            <h4>💳 Payment Methods</h4>
+                            <div style="margin-top: var(--spacing-md);">
+                                <div style="display: flex; gap: var(--spacing-sm); flex-wrap: wrap;">
+                                    <span class="badge badge-info">Cash on Delivery</span>
+                                    <span class="badge badge-info">Bank Transfer</span>
+                                    <span class="badge badge-info">Mobile Payment</span>
+                                </div>
+                                <p style="font-size: 0.9rem; color: var(--dark-gray); margin-top: var(--spacing-sm);">
+                                    Secure payment options available. All transactions are in sandbox mode.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Products -->
+    <section class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">You Might Also Like</h2>
+            <div class="product-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                <!-- Related Product 1 -->
+                <div class="product-card">
+                    <div class="product-image">🥒</div>
+                    <div class="product-info">
+                        <h3 class="product-title">Fresh Cucumbers</h3>
+                        <div class="product-price">Rs. 140/kg</div>
+                        <div class="product-location">📍 Kandy</div>
+                        <div class="product-farmer">👨‍🌾 Kamal Perera</div>
+                        <button class="btn btn-primary w-full mt-md add-to-cart" data-product-id="10">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Related Product 2 -->
+                <div class="product-card">
+                    <div class="product-image">🥔</div>
+                    <div class="product-info">
+                        <h3 class="product-title">Farm Potatoes</h3>
+                        <div class="product-price">Rs. 130/kg</div>
+                        <div class="product-location">📍 Nuwara Eliya</div>
+                        <div class="product-farmer">👩‍🌾 Nirmala Silva</div>
+                        <button class="btn btn-primary w-full mt-md add-to-cart" data-product-id="11">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Related Product 3 -->
+                <div class="product-card">
+                    <div class="product-image">🧅</div>
+                    <div class="product-info">
+                        <h3 class="product-title">Red Onions</h3>
+                        <div class="product-price">Rs. 110/kg</div>
+                        <div class="product-location">📍 Anuradhapura</div>
+                        <div class="product-farmer">👨‍🌾 Bandara Wickrama</div>
+                        <button class="btn btn-primary w-full mt-md add-to-cart" data-product-id="12">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Related Product 4 -->
+                <div class="product-card">
+                    <div class="product-image">🥦</div>
+                    <div class="product-info">
+                        <h3 class="product-title">Fresh Broccoli</h3>
+                        <div class="product-price">Rs. 280/kg</div>
+                        <div class="product-location">📍 Nuwara Eliya</div>
+                        <div class="product-farmer">👩‍🌾 Sujatha Fernando</div>
+                        <button class="btn btn-primary w-full mt-md add-to-cart" data-product-id="13">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>AgroLink</h3>
+                    <p>Empowering agricultural trade across Sri Lanka through digital innovation.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Customer Support</h3>
+                    <a href="#help">Help Center</a>
+                    <a href="#contact">Contact Us</a>
+                    <a href="#returns">Returns & Refunds</a>
+                    <a href="#shipping">Shipping Info</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <a href="#terms">Terms & Conditions</a>
+                    <a href="#privacy">Privacy Policy</a>
+                    <a href="#cookies">Cookie Policy</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AgroLink - UCSC Project. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Update cart summary
+        function updateCartSummary() {
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const deliveryFee = subtotal >= 2500 ? 0 : 150;
+            const platformFee = subtotal > 0 ? 25 : 0;
+            const total = subtotal + deliveryFee + platformFee;
+
+            document.querySelector('.cart-subtotal').textContent = `Rs. ${subtotal.toFixed(2)}`;
+            document.querySelector('.delivery-fee').textContent = deliveryFee === 0 ? 'FREE' : `Rs. ${deliveryFee.toFixed(2)}`;
+            document.querySelector('.platform-fee').textContent = platformFee === 0 ? 'Rs. 0.00' : `Rs. ${platformFee.toFixed(2)}`;
+            document.querySelector('.cart-total').textContent = `Rs. ${total.toFixed(2)}`;
+
+            // Disable checkout button if cart is empty
+            const checkoutBtn = document.getElementById('checkoutBtn');
+            if (cart.length === 0) {
+                checkoutBtn.style.opacity = '0.5';
+                checkoutBtn.style.pointerEvents = 'none';
+            } else {
+                checkoutBtn.style.opacity = '1';
+                checkoutBtn.style.pointerEvents = 'auto';
+            }
+        }
+
+        // Override the renderCartItems function for cart page
+        function renderCartItems() {
+            const cartContainer = document.getElementById('cartItems');
+            if (!cartContainer) return;
+
+            if (cart.length === 0) {
+                cartContainer.innerHTML = `
+                    <div class="text-center p-xl">
+                        <div style="font-size: 4rem; margin-bottom: var(--spacing-md);">🛒</div>
+                        <h3>Your cart is empty</h3>
+                        <p class="text-muted">Discover fresh produce from local farmers</p>
+                        <a href="products.html" class="btn btn-primary mt-lg">Start Shopping</a>
+                    </div>
+                `;
+                updateCartSummary();
+                return;
+            }
+
+            cartContainer.innerHTML = cart.map(item => `
+                <div class="cart-item" style="display: flex; align-items: center; gap: var(--spacing-md); padding: var(--spacing-md); border: 1px solid var(--medium-gray); border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
+                    <div class="cart-item-image" style="width: 80px; height: 80px; background: var(--light-green); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 2rem;">
+                        ${item.image || '🥬'}
+                    </div>
+                    <div class="cart-item-info" style="flex: 1;">
+                        <div class="cart-item-title" style="font-weight: var(--font-weight-bold); margin-bottom: var(--spacing-xs);">${item.name}</div>
+                        <div class="cart-item-farmer" style="color: var(--dark-gray); font-size: 0.9rem; margin-bottom: var(--spacing-xs);">by ${item.farmer}</div>
+                        <div class="cart-item-price" style="color: var(--primary-green); font-weight: var(--font-weight-bold);">Rs. ${item.price}/kg</div>
+                    </div>
+                    <div class="quantity-controls" style="display: flex; align-items: center; gap: var(--spacing-sm);">
+                        <button class="quantity-btn quantity-decrease" data-product-id="${item.id}" style="width: 35px; height: 35px; border: 1px solid var(--medium-gray); background: var(--white); border-radius: var(--radius-sm); cursor: pointer; display: flex; align-items: center; justify-content: center;">-</button>
+                        <span class="quantity" style="min-width: 30px; text-align: center; font-weight: var(--font-weight-bold);">${item.quantity}</span>
+                        <button class="quantity-btn quantity-increase" data-product-id="${item.id}" style="width: 35px; height: 35px; border: 1px solid var(--medium-gray); background: var(--white); border-radius: var(--radius-sm); cursor: pointer; display: flex; align-items: center; justify-content: center;">+</button>
+                    </div>
+                    <div class="cart-item-total" style="min-width: 100px; text-align: right;">
+                        <div style="font-weight: var(--font-weight-bold); color: var(--primary-green);">Rs. ${(item.price * item.quantity).toFixed(2)}</div>
+                    </div>
+                    <button class="remove-item" data-product-id="${item.id}" style="background: #f44336; color: white; border: none; border-radius: var(--radius-sm); padding: var(--spacing-xs); cursor: pointer; margin-left: var(--spacing-sm);">🗑️</button>
+                </div>
+            `).join('');
+
+            updateCartSummary();
+        }
+
+        // Initialize cart page
+        document.addEventListener('DOMContentLoaded', function() {
+            renderCartItems();
+            updateCartSummary();
+        });
+
+        // Add related products to mock data
+        function getRelatedProducts() {
+            return [
+                {
+                    id: '10',
+                    name: 'Fresh Cucumbers',
+                    price: 140,
+                    image: '🥒',
+                    farmer: 'Kamal Perera',
+                    location: 'Kandy',
+                    category: 'vegetables'
+                },
+                {
+                    id: '11',
+                    name: 'Farm Potatoes',
+                    price: 130,
+                    image: '🥔',
+                    farmer: 'Nirmala Silva',
+                    location: 'Nuwara Eliya',
+                    category: 'vegetables'
+                },
+                {
+                    id: '12',
+                    name: 'Red Onions',
+                    price: 110,
+                    image: '🧅',
+                    farmer: 'Bandara Wickrama',
+                    location: 'Anuradhapura',
+                    category: 'vegetables'
+                },
+                {
+                    id: '13',
+                    name: 'Fresh Broccoli',
+                    price: 280,
+                    image: '🥦',
+                    farmer: 'Sujatha Fernando',
+                    location: 'Nuwara Eliya',
+                    category: 'vegetables'
+                }
+            ];
+        }
+
+        // Update getMockProducts to include related products
+        const originalGetMockProducts = getMockProducts;
+        function getMockProducts() {
+            return [...originalGetMockProducts(), ...getRelatedProducts()];
+        }
+    </script>
+</body>
+</html>
