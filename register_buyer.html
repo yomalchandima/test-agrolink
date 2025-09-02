@@ -11,6 +11,7 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
+    <script src="assets/js/main.js"></script>
   </head>
   <body>
     <div class="split-container">
@@ -119,7 +120,81 @@
         .getElementById("registerBuyerForm")
         .addEventListener("submit", function (e) {
           e.preventDefault();
-          alert("Account created! (Demo)");
+          
+          // Get form data
+          const formData = new FormData(this);
+          const data = Object.fromEntries(formData);
+          
+          // Add role and required fields
+          data.role = 'buyer';
+          data.full_name = data.name;
+          data.confirm_password = data.password;
+          
+          console.log('Form data after processing:', data);
+          
+          // Basic validation
+          if (data.password.length < 6) {
+            if (typeof showNotification === 'function') {
+              showNotification('Password must be at least 6 characters long!', 'error');
+            } else {
+              alert('Password must be at least 6 characters long!');
+            }
+            return;
+          }
+          
+          // Show loading state
+          const submitBtn = this.querySelector('button[type="submit"]');
+          const originalText = submitBtn.textContent;
+          submitBtn.textContent = 'Creating Account...';
+          submitBtn.disabled = true;
+          
+          // Send registration request
+          console.log('Sending registration data:', data);
+          fetch('auth/register.php', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+          })
+          .then(response => {
+            console.log('Response status:', response.status);
+            return response.json();
+          })
+          .then(data => {
+            console.log('Response data:', data);
+            if (data.success) {
+              if (typeof showNotification === 'function') {
+                showNotification(data.message, 'success');
+              } else {
+                alert(data.message);
+              }
+              
+              // Redirect to login page after 2 seconds
+              setTimeout(() => {
+                window.location.href = 'login.html';
+              }, 2000);
+            } else {
+              if (typeof showNotification === 'function') {
+                showNotification(data.message, 'error');
+              } else {
+                alert(data.message);
+              }
+            }
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            if (typeof showNotification === 'function') {
+              showNotification('Registration failed. Please try again.', 'error');
+            } else {
+              alert('Registration failed. Please try again.');
+            }
+          })
+          .finally(() => {
+            // Reset button state
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+          });
         });
     </script>
   </body>

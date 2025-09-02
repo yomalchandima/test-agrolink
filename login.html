@@ -17,7 +17,7 @@
                 <a href="index.html">Home</a>
                 <a href="index.html#about">About</a>
                 <a href="index.html#features">Features</a>
-                <a href="products.html">Products</a>
+                <a href="dashboard_buyer.html#products">Products</a>
             </div>
             <div class="nav-actions">
                 <a href="#register" class="btn btn-primary" data-modal="registerModal">Register</a>
@@ -135,6 +135,61 @@
 
     <script src="assets/js/main.js"></script>
     <script>
+        // Handle login form submission
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                email: document.getElementById('email').value,
+                password: document.getElementById('password').value,
+                role: document.getElementById('role').value
+            };
+            
+            // Show loading state
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Signing In...';
+            submitBtn.disabled = true;
+            
+            // Send login request
+            fetch('auth/login.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showNotification(data.message, 'success');
+                    
+                    // Store user data in localStorage for frontend use
+                    localStorage.setItem('user_id', data.user.id);
+                    localStorage.setItem('user_email', data.user.email);
+                    localStorage.setItem('user_role', data.user.role);
+                    localStorage.setItem('user_name', data.user.full_name);
+                    localStorage.setItem('business_name', data.user.business_name);
+                    
+                    // Redirect to appropriate dashboard
+                    setTimeout(() => {
+                        window.location.href = data.redirect_url;
+                    }, 1000);
+                } else {
+                    showNotification(data.message, 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showNotification('Login failed. Please try again.', 'error');
+            })
+            .finally(() => {
+                // Reset button state
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            });
+        });
+
         // Demo login function
         function loginDemo(role) {
             const demoAccounts = {

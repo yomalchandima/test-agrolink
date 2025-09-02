@@ -49,11 +49,11 @@
           </div>
           <form id="registerFarmerForm" autocomplete="off">
             <div class="form-group">
-              <label for="firstName">Name</label>
+              <label for="fullName">Name</label>
               <input
                 type="text"
-                id="firstName"
-                name="firstName"
+                id="fullName"
+                name="fullName"
                 class="form-control"
                 required
                 placeholder="Your name"
@@ -76,6 +76,17 @@
                 type="password"
                 id="password"
                 name="password"
+                class="form-control"
+                required
+                placeholder="********"
+              />
+            </div>
+            <div class="form-group">
+              <label for="confirmPassword">Confirm Password</label>
+              <input
+                type="password"
+                id="confirmPassword"
+                name="confirmPassword"
                 class="form-control"
                 required
                 placeholder="********"
@@ -106,23 +117,45 @@
         // Placeholder for Google login integration
         alert("Google login coming soon!");
       }
-      // Optional: handle form submission
-      document
-        .getElementById("registerFarmerForm")
-        .addEventListener("submit", function (e) {
-          e.preventDefault();
-          // Add your registration logic here
-          alert("Account created! (Demo)");
-        });
-      document
-        .getElementById("registerRoleSelect")
-        .addEventListener("change", function () {
-          if (this.value === "buyer") {
-            window.location.href = "register_buyer.html";
-          } else if (this.value === "transporter") {
-            window.location.href = "register_transporter.html";
+      // Real registration logic
+      document.getElementById("registerFarmerForm").addEventListener("submit", async function (e) {
+        e.preventDefault();
+        const fullName = document.getElementById("fullName").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value;
+        const confirmPassword = document.getElementById("confirmPassword").value;
+        // You can add more fields here if needed (phone, location, etc.)
+        const payload = {
+          full_name: fullName,
+          email: email,
+          password: password,
+          confirm_password: confirmPassword,
+          role: "farmer"
+        };
+        try {
+          const res = await fetch("auth/register.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+          });
+          const data = await res.json();
+          if (data.success) {
+            alert("Registration successful! Please login.");
+            window.location.href = "login.html";
+          } else {
+            alert("Registration failed: " + (data.message || "Unknown error"));
           }
-        });
+        } catch (err) {
+          alert("Network or server error. Please try again later.");
+        }
+      });
+      document.getElementById("registerRoleSelect").addEventListener("change", function () {
+        if (this.value === "buyer") {
+          window.location.href = "register_buyer.html";
+        } else if (this.value === "transporter") {
+          window.location.href = "register_transporter.html";
+        }
+      });
     </script>
   </body>
 </html>
